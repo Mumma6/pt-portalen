@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 
 interface IFormData {
   name: string;
@@ -8,7 +11,7 @@ interface IFormData {
   password2: string;
 }
 
-const Register: React.FC = () => {
+const Register: React.FC = (props: any) => {
   const initialState = {
     name: "",
     email: "",
@@ -23,12 +26,26 @@ const Register: React.FC = () => {
   const onChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault();
     if (password !== password2) {
-      alert("fel pw");
+      props.setAlert("Lösenorden matchar inte", "danger");
+      setFormData({
+        name: name,
+        email: email,
+        password: "",
+        password2: ""
+      })
     } else {
-      console.log(formData);
+      console.log("Det funkar I quesssss");
+      props.register({ name, email, password });
+      
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        password2: ""
+      })
     }
   };
 
@@ -46,7 +63,6 @@ const Register: React.FC = () => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -56,7 +72,6 @@ const Register: React.FC = () => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -88,4 +103,7 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default connect(
+  null,
+  { setAlert, register }
+)(Register);

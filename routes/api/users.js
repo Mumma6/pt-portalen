@@ -12,13 +12,13 @@ const config = require("config");
 router.post(
   "/",
   [
-    check("name", "Name is required")
+    check("name", "Ange ett namn")
       .not()
       .isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
+    check("email", "Använd en giltlig e-postadress").isEmail(),
     check(
       "password",
-      "Please enter a password with 6 or more characters"
+      "Lösenordet måste innehålla minst 6 karaktärer"
     ).isLength({ min: 6 })
   ],
   async (req, res) => {

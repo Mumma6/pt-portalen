@@ -26,10 +26,10 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/",
   [
-    check("email", "Please include a valid email").isEmail(),
+    check("email", "Använd en giltigt e-postaddress").isEmail(),
     check(
       "password",
-      "Please is requierd"
+      "Ange ett lösenord"
     ).exists()
   ],
   async (req, res) => {
