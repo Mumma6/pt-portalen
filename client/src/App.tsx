@@ -13,6 +13,7 @@ import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import Dashboard from "./components/dashboard/Dashboard";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -25,6 +26,8 @@ const App: React.FC = () => {
     store.dispatch(loadUser());
   }, []);
 
+
+
   return (
     <Provider store={store}>
       <Router>
@@ -36,6 +39,8 @@ const App: React.FC = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </Switch>
           </section>
         </React.Fragment>

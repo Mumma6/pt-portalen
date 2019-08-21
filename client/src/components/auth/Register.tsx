@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 
@@ -48,6 +48,11 @@ const Register: React.FC = (props: any) => {
       })
     }
   };
+
+   // redirect if loged in
+  if(props.isAuthenticated) {
+    return <Redirect to="/dashboard" />
+  }
 
   return (
     <React.Fragment>
@@ -103,7 +108,11 @@ const Register: React.FC = (props: any) => {
   );
 };
 
+const mapStateToProps = (state: any) => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   { setAlert, register }
 )(Register);

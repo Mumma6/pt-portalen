@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 
 interface ILogin {
   email: string;
   password: string;
 }
 
-const Login: React.FC = () => {
+const Login: React.FC = (props: any) => {
   const initialState = {
     email: "",
     password: ""
@@ -22,7 +24,13 @@ const Login: React.FC = () => {
   const onSubmit = (e: any) => {
     e.preventDefault();
     console.log("Submittedddd, inloggad what everrr");
+    props.login({ email, password });
   };
+
+  // redirect if loged in
+  if(props.isAuthenticated) {
+    return <Redirect to="/dashboard" />
+  }
 
   return (
     <React.Fragment>
@@ -60,4 +68,11 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state: any) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login);

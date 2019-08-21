@@ -4,7 +4,11 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOG_OUT,
+  CLEAR_PROFILE
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -54,6 +58,8 @@ export const register = ({ name, email, password }: IRegister) => async (
       payload: res.data
     });
 
+    dispatch(loadUser())
+
     dispatch(setAlert("Användare registrerad!", "success"));
   } catch (error) {
     const errors = error.response.data.errors;
@@ -65,4 +71,52 @@ export const register = ({ name, email, password }: IRegister) => async (
       type: REGISTER_FAIL
     });
   }
+}
+
+  // Login User
+interface ILogin {
+  email: string;
+  password: string;
+}
+
+export const login = ({ email, password }: ILogin) => async (
+  dispatch: any
+) => {
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  try {
+    const res = await axios.post("api/auth", body, config);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(setAlert("Inloggningen lyckades", "success"));
+
+    dispatch(loadUser())
+
+  } catch (error) {
+    const errors = error.response.data.errors;
+    if (errors) {
+      errors.forEach((error: any) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
 };
+
+// Logout user and clear profile
+export const logout = () => (dispatch: any) => {
+  dispatch({ type: CLEAR_PROFILE })
+  dispatch({ type: LOG_OUT })
+  
+}
