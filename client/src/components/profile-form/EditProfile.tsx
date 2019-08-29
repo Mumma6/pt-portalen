@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { createProfile } from "../../actions/profile";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
-const CreateProfile: React.FC = (props: any) => {
+const EditProfile: React.FC = (props: any) => {
   interface IInitialState {
     company: string;
     website: string;
@@ -39,6 +39,25 @@ const CreateProfile: React.FC = (props: any) => {
   // display social state
   const [showSocialInputs, toggleSocialnputs] = useState(false);
 
+  const { loading, profile } = props.profile;
+  useEffect(() => {
+    props.getCurrentProfile();
+
+    setFormData({
+      company: loading || !profile.company ? "" : profile.company,
+      website: loading || !profile.website ? "" : profile.website,
+      location: loading || !profile.location ? "" : profile.location,
+      status: loading || !profile.status ? "" : profile.status,
+      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      bio: loading || !profile.bio ? "" : profile.bio,
+      facebook: loading || !profile.facebook ? "" : profile.facebook,
+      instagram: loading || !profile.instagram ? "" : profile.instagram,
+      linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
+      youtube: loading || !profile.youtube ? "" : profile.youtube,
+      job: loading || !profile.job ? "" : profile.job
+    });
+  }, [loading]);
+
   // Destructor formData
   const {
     company,
@@ -58,13 +77,12 @@ const CreateProfile: React.FC = (props: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    props.createProfile(formData)
+    props.createProfile(formData);
 
-    props.history.push("/dashboard")
-
-  }
+    props.history.push("/dashboard");
+  };
 
   return (
     <div>
@@ -72,7 +90,7 @@ const CreateProfile: React.FC = (props: any) => {
         <Redirect to="/login" />
       ) : (
         <div>
-          <h1 className="large text-primary">Skapa din profil</h1>
+          <h1 className="large text-primary">Redigera din profil</h1>
           <p className="lead">
             <i className="fas fa-user" /> Få din profil att stå ut genom att
             fylla i alla fälten
@@ -155,14 +173,8 @@ const CreateProfile: React.FC = (props: any) => {
               <small className="form-text">Berätta lite om dig själv</small>
             </div>
 
-
-            
             <div className="form-group">
-              <select
-                name="job"
-                value={job}
-                onChange={(e: any) => onChange(e)}
-              >
+              <select name="job" value={job} onChange={(e: any) => onChange(e)}>
                 <option value="0">Välj ur listan</option>
                 <option value="Söker jobb">Söker jobb</option>
                 <option value="Söker inte jobb">Söker inte jobb</option>
@@ -170,9 +182,7 @@ const CreateProfile: React.FC = (props: any) => {
               <small className="form-text">Hur är din jobbstatus</small>
             </div>
 
-            <div>
-
-            </div>
+            <div></div>
 
             <div className="my-2">
               <button
@@ -232,11 +242,14 @@ const CreateProfile: React.FC = (props: any) => {
               </Fragment>
             )}
 
-            <Link to="/dashboard"><input type="submit" onClick={(e) => onSubmit(e)} className="btn btn-primary my-1" />
+            <Link to="/dashboard">
+              <input
+                type="submit"
+                onClick={e => onSubmit(e)}
+                className="btn btn-primary my-1"
+              ></input>
             </Link>
-            <a className="btn btn-light my-1">
-              Avbryt
-            </a>
+            <Link to="/dashboard" className="btn btn-light my-1">Avbryt</Link>
           </form>
         </div>
       )}
@@ -245,7 +258,11 @@ const CreateProfile: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
+  profile: state.profile,
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
+export default connect(
+  mapStateToProps,
+  { createProfile, getCurrentProfile }
+)(withRouter(EditProfile));

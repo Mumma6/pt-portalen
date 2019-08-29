@@ -25,6 +25,9 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String
   },
+  job: {
+    type: String
+  },
   experience: [
     {
       title: {
@@ -93,7 +96,10 @@ const ProfileSchema = new mongoose.Schema({
     },
     instagram: {
       type: String
-    }
+    },
+    youtube: {
+      type: String
+    },
   },
   date: {
     type: Date,

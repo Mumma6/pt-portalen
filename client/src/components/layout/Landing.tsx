@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Footer from "./Footer";
 
 const Landing: React.FC = ({ isAuthenticated }: any) => {
   if(isAuthenticated) {
@@ -24,7 +25,9 @@ const Landing: React.FC = ({ isAuthenticated }: any) => {
             </Link>
           </div>
         </div>
+        <Footer />
       </div>
+      
     </section>
   );
 };

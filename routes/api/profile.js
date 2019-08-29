@@ -54,8 +54,11 @@ router.post(
       skills,
       facebook,
       instagram,
-      linkedin
+      linkedin,
+      job,
+      youtube
     } = req.body;
+
 
     // Build profile object
     const profileFields = {};
@@ -65,6 +68,7 @@ router.post(
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
+    if (job) profileFields.job = job;
     if (skills) {
       profileFields.skills = skills.split(",").map(skill => skill.trim());
     }
@@ -74,6 +78,7 @@ router.post(
     if (facebook) profileFields.social.facebook = facebook;
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
+    if (youtube) profileFields.social.youtube = youtube;
 
     try {
       // Using upsert option (creates new doc if no match is found):

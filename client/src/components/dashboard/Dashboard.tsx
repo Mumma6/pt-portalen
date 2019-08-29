@@ -5,9 +5,11 @@ import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../../utils/Spinner";
 import { Link } from "react-router-dom";
 
+import DashboardsActions from "./DashboardsAction";
+import Experience from "./Experience";
+import Education from "./Education";
+import profile from "../../reducers/profile";
 
-
-// Denna komponent måste förfinas... fixa buggen som visar login när man refreshar. Kanske ha if / if else statements istället
 
 const Dashboard = (props: any) => {
   useEffect(() => {
@@ -16,18 +18,23 @@ const Dashboard = (props: any) => {
     props.getCurrentProfile();
   }, []);
 
-  // Glöm inte att ändra rad 27 till !== null!!! viktigt
-  const auth = (
+  // Redirect if not logged in.
+  if (props.auth.isAuthenticated === false) {
+    return <Redirect to="/login" />;
+  }
+
+  if (props.profile.loading === true) {
+    return <Spinner />;
+  }
+  return (
     <div>
-      {props.profile.loading === true ? (
-        <Spinner />
-      ) : (
+      <div>
         <div>
-        
-          {props.profile.profile === null ? (
+          {props.profile.profile !== null ? (
             <Fragment>
               <p className="lead">
-                <i className="fas fa-user" /> Välkommen {props.auth.user.name}
+                <i className="fas fa-user" /> Välkommen{" "}
+                {props.profile.profile.user.name}
               </p>
             </Fragment>
           ) : (
@@ -39,20 +46,10 @@ const Dashboard = (props: any) => {
             </Fragment>
           )}
         </div>
-      )}
-    </div>
-  );
-
-  // if user is logged in load auth else redircet to login
-  return (
-    <div>
-      <div>
-        {props.auth.isAuthenticated === false ? (
-          <Redirect to="/login" />
-        ) : (
-          <div>{auth}</div>
-        )}
       </div>
+      <DashboardsActions />
+      <Experience experience={props.profile.profile.experience} />
+      <Education education={props.profile.profile.education} />
     </div>
   );
 };

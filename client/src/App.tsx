@@ -15,6 +15,10 @@ import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-form/CreateProfile";
+import EditProfile from "./components/profile-form/EditProfile";
+import AddExperience from "./components/profile-form/AddExperience";
+import AddEducation from "./components/profile-form/AddEducation";
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -42,7 +46,9 @@ const App: React.FC = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/create-profile" component={CreateProfile} />
-              
+              <Route exact path="/edit-profile" component={EditProfile} />
+              <Route exact path="/add-experience" component={AddExperience} />
+              <Route exact path="/add-education" component={AddEducation} />
             </Switch>
           </section>
         </React.Fragment>

@@ -2,3 +2,4 @@
   "mongoURI": "mongodb+srv://martin:martin123@cluster0-j6lqz.mongodb.net/test?retryWrites=true&w=majority",
   "jwtSecret": "secrettoken"
 }
+
