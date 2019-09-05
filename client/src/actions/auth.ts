@@ -98,9 +98,12 @@ export const login = ({ email, password }: ILogin) => async (
       payload: res.data
     });
 
-    dispatch(setAlert("Inloggningen lyckades", "success"));
 
     dispatch(loadUser())
+    
+    dispatch(setAlert("Inloggningen lyckades", "success"));
+
+    
 
   } catch (error) {
     const errors = error.response.data.errors;

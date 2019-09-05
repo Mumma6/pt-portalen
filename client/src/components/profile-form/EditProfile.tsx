@@ -1,3 +1,6 @@
+// hela staten uppdateras även ifall jag bara ändrar en grej...... vilket gör att vissa saker försvinner
+
+
 import React, { useState, Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router";
@@ -201,7 +204,11 @@ const EditProfile: React.FC = (props: any) => {
                   <i className="fab fa-facebook fa-2x" />
                   <input
                     type="text"
-                    placeholder="Facebook URL"
+                    placeholder={
+                      facebook
+                        ? `${facebook}`
+                        : "Facebook URL"
+                    }
                     name="facebook"
                     value={facebook}
                     onChange={(e: any) => onChange(e)}
@@ -212,9 +219,14 @@ const EditProfile: React.FC = (props: any) => {
                   <i className="fab fa-youtube fa-2x" />
                   <input
                     type="text"
-                    placeholder="YouTube URL"
+                    placeholder={
+                      youtube
+                        ? `${youtube}`
+                        : "Youtube URL"
+                    }
                     name="youtube"
                     value={youtube}
+                    onChange={(e: any) => onChange(e)}
                   />
                 </div>
 
@@ -222,7 +234,11 @@ const EditProfile: React.FC = (props: any) => {
                   <i className="fab fa-linkedin fa-2x" />
                   <input
                     type="text"
-                    placeholder="Linkedin URL"
+                    placeholder={
+                      linkedin
+                        ? `${linkedin}`
+                        : "Linkedin URL"
+                    }
                     name="linkedin"
                     value={linkedin}
                     onChange={(e: any) => onChange(e)}
@@ -233,7 +249,11 @@ const EditProfile: React.FC = (props: any) => {
                   <i className="fab fa-instagram fa-2x" />
                   <input
                     type="text"
-                    placeholder="Instagram URL"
+                    placeholder={
+                      instagram
+                        ? `${instagram}`
+                        : "Instagram URL"
+                    }
                     name="instagram"
                     value={instagram}
                     onChange={(e: any) => onChange(e)}
@@ -249,7 +269,9 @@ const EditProfile: React.FC = (props: any) => {
                 className="btn btn-primary my-1"
               ></input>
             </Link>
-            <Link to="/dashboard" className="btn btn-light my-1">Avbryt</Link>
+            <Link to="/dashboard" className="btn btn-light my-1">
+              Avbryt
+            </Link>
           </form>
         </div>
       )}

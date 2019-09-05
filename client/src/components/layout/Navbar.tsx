@@ -10,6 +10,9 @@ const Navbar: React.FC = (props: any) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to="/profiles">Personliga tränare</Link>
+      </li>
+      <li>
         <Link to="/dashboard">
         <i className="fas fa-user" />{" "}
         <span className="hide-sm">Dashboard</span></Link>
@@ -27,7 +30,7 @@ const Navbar: React.FC = (props: any) => {
   const questLinks = (
     <ul>
       <li>
-        <Link to="profiles.html">Personliga tränare</Link>
+        <Link to="/profiles">Personliga tränare</Link>
       </li>
       <li>
         <Link to="/register">Skapa konto</Link>

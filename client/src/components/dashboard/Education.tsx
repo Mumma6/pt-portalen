@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
+import { deleteEducation } from "../../actions/profile";
 
 const Education = (props: any) => {
   const educations = props.education.map((edu: any) => (
@@ -16,7 +17,7 @@ const Education = (props: any) => {
         )}
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button onClick={() => props.deleteEducation(props.edu_id)} className="btn btn-danger">Delete</button>
       </td>
     </tr>
   ));
@@ -39,4 +40,4 @@ const Education = (props: any) => {
   );
 };
 
-export default Education;
+export default connect(null, { deleteEducation })(Education) ;

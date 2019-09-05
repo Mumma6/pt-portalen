@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addEducation } from "../../actions/profile";
+import { addEducation, getCurrentProfile } from "../../actions/profile";
 import { Link, withRouter } from "react-router-dom";
 
 interface IEducation {
@@ -44,6 +44,7 @@ const AddEducation = (props: any) => {
       <form className="form" onSubmit={(e: any) => {
         e.preventDefault()
         props.addEducation(formData);
+        props.getCurrentProfile();
         props.history.push("/dashboard");
       }}>
         <div className="form-group">
@@ -123,5 +124,6 @@ const AddEducation = (props: any) => {
 
 export default connect(
   null,
-  { addEducation }
+  { addEducation,
+  getCurrentProfile }
 )(withRouter(AddEducation));

@@ -1,14 +1,13 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
-import { getCurrentProfile } from "../../actions/profile";
+import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 import Spinner from "../../utils/Spinner";
 import { Link } from "react-router-dom";
 
 import DashboardsActions from "./DashboardsAction";
 import Experience from "./Experience";
 import Education from "./Education";
-import profile from "../../reducers/profile";
 
 
 const Dashboard = (props: any) => {
@@ -16,7 +15,7 @@ const Dashboard = (props: any) => {
     // get current profile is a Props
     console.log("use effffect");
     props.getCurrentProfile();
-  }, []);
+  }, [props.getCurrentProfile]);
 
   // Redirect if not logged in.
   if (props.auth.isAuthenticated === false) {
@@ -36,6 +35,16 @@ const Dashboard = (props: any) => {
                 <i className="fas fa-user" /> Välkommen{" "}
                 {props.profile.profile.user.name}
               </p>
+              <DashboardsActions />
+              <Experience experience={props.profile.profile.experience} />
+              <Education education={props.profile.profile.education} />
+              <div className="my-2">
+                <button className="btn btn-danger"
+                  onClick={() => props.deleteAccount()}
+                >
+                  <i className="fas fa-user-minus"></i> Ta bort mitt konto
+                </button>
+              </div>
             </Fragment>
           ) : (
             <Fragment>
@@ -47,9 +56,6 @@ const Dashboard = (props: any) => {
           )}
         </div>
       </div>
-      <DashboardsActions />
-      <Experience experience={props.profile.profile.experience} />
-      <Education education={props.profile.profile.education} />
     </div>
   );
 };
@@ -61,5 +67,6 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile,
+  deleteAccount }
 )(Dashboard);

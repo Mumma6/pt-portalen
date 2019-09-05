@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import { getCurrentProfile } from "../../actions/profile";
 
 interface ILogin {
   email: string;
@@ -13,6 +14,12 @@ const Login: React.FC = (props: any) => {
     email: "",
     password: ""
   };
+
+  useEffect(() => {
+    // get current profile is a Props
+    console.log("use effffect");
+    props.getCurrentProfile();
+  }, []);
 
   const [loginData, setLoginData] = useState<ILogin>(initialState);
 
@@ -74,5 +81,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
   mapStateToProps,
-  { login }
+  { login, getCurrentProfile  }
 )(Login);

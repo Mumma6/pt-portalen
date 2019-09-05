@@ -18,6 +18,8 @@ import CreateProfile from "./components/profile-form/CreateProfile";
 import EditProfile from "./components/profile-form/EditProfile";
 import AddExperience from "./components/profile-form/AddExperience";
 import AddEducation from "./components/profile-form/AddEducation";
+import Profiles from "./components/profile/Profiles";
+import Profile from "./components/profile-individ/Profile";
 
 
 if (localStorage.token) {
@@ -44,11 +46,13 @@ const App: React.FC = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/create-profile" component={CreateProfile} />
               <Route exact path="/edit-profile" component={EditProfile} />
               <Route exact path="/add-experience" component={AddExperience} />
               <Route exact path="/add-education" component={AddEducation} />
+              <Route exact path="/profile/:id" component={Profile} />
             </Switch>
           </section>
         </React.Fragment>

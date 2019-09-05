@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addExperience } from "../../actions/profile";
+import { addExperience, getCurrentProfile } from "../../actions/profile";
 import { Link, withRouter } from "react-router-dom";
 
 interface IExperience {
@@ -45,6 +45,7 @@ const AddExperience = (props: any) => {
       <form className="form" onSubmit={(e: any) => {
         e.preventDefault()
         props.addExperience(formData);
+        props.getCurrentProfile()
         props.history.push("/dashboard");
       }}>
         <div className="form-group">
@@ -124,5 +125,6 @@ const AddExperience = (props: any) => {
 
 export default connect(
   null,
-  { addExperience }
+  { addExperience,
+  getCurrentProfile }
 )(withRouter(AddExperience));
