@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
+    <div className="footer">
       <h2>Detta är en footer men vad ska ingå?</h2>
       <ul>
         <li>OM pt portalen</li>

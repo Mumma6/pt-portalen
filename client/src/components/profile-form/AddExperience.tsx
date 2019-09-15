@@ -97,7 +97,7 @@ const AddExperience = (props: any) => {
                 toggleDisable(!toDateDisable);
               }}
             />{" "}
-            Current Job
+            Nyvarande job
           </p>
         </div>
         <div className="form-group">

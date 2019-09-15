@@ -20,6 +20,8 @@ import AddExperience from "./components/profile-form/AddExperience";
 import AddEducation from "./components/profile-form/AddEducation";
 import Profiles from "./components/profile/Profiles";
 import Profile from "./components/profile-individ/Profile";
+import Posts from "./components/forum/Posts";
+import Post from "./components/post/Post";
 
 
 if (localStorage.token) {
@@ -53,6 +55,8 @@ const App: React.FC = () => {
               <Route exact path="/add-experience" component={AddExperience} />
               <Route exact path="/add-education" component={AddEducation} />
               <Route exact path="/profile/:id" component={Profile} />
+              <Route exact path="/posts" component={Posts} />
+              <Route exact path="/post/:id" component={Post} />
             </Switch>
           </section>
         </React.Fragment>

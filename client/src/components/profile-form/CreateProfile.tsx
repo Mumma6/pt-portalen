@@ -118,8 +118,7 @@ const CreateProfile: React.FC = (props: any) => {
                 onChange={(e: any) => onChange(e)}
               />
               <small className="form-text">
-                Har du en egen hemsida? alternativ hemsidan på ditt företag som
-                du är anställd på
+                Hemsidan måste anges i formatet www.hemsida.com 
               </small>
             </div>
             <div className="form-group">
@@ -205,6 +204,8 @@ const CreateProfile: React.FC = (props: any) => {
                     placeholder="YouTube URL"
                     name="youtube"
                     value={youtube}
+                    onChange={(e: any) => onChange(e)}
+                    
                   />
                 </div>
 

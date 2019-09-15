@@ -10,12 +10,19 @@ const Navbar: React.FC = (props: any) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Personliga tränare</Link>
+      <Link to="/profiles">
+        <i className="fas fa-user-friends" />{" "}
+        <span className="hide-sm">Personliga tränare</span></Link>
       </li>
       <li>
         <Link to="/dashboard">
         <i className="fas fa-user" />{" "}
-        <span className="hide-sm">Dashboard</span></Link>
+        <span className="hide-sm">Profil</span></Link>
+      </li>
+      <li>
+      <Link to="/posts">
+        <i className="fas fa-comment-dots" />{" "}
+        <span className="hide-sm">Forum</span></Link>
       </li>
       <li>
         <Link to="/" onClick={props.logout}>
@@ -23,21 +30,36 @@ const Navbar: React.FC = (props: any) => {
           <span className="hide-sm">Logga ut</span>
         </Link>
       </li>
+      
     </ul>
   );
+
+
 
   // Loged out
   const questLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Personliga tränare</Link>
+      <Link to="/profiles">
+        <i className="fas fa-user-friends" />{" "}
+        <span className="hide-sm">Personliga tränare</span></Link>
       </li>
       <li>
-        <Link to="/register">Skapa konto</Link>
+      <Link to="/register">
+        <i className="fas fa-user-plus" />{" "}
+        <span className="hide-sm">Skapa konto</span></Link>
       </li>
       <li>
-        <Link to="/login">Logga in</Link>
+      <Link to="/posts">
+        <i className="fas fa-comment-dots" />{" "}
+        <span className="hide-sm">Forum</span></Link>
       </li>
+      <li>
+      <Link to="/login">
+        <i className="fas fa-sign-in-alt" />{" "}
+        <span className="hide-sm">Logga in</span></Link>
+      </li>
+      
     </ul>
   );
 

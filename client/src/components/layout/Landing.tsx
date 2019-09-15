@@ -27,7 +27,7 @@ const Landing: React.FC = ({ isAuthenticated }: any) => {
         </div>
         <Footer />
       </div>
-      
+    
     </section>
   );
 };

@@ -349,6 +349,13 @@ button {
   text-align: center;
 }
 
+/* Footer */
+.footer {
+  background-color: lightslategray;
+  color: white;
+  text-align: center;
+}
+
 /* Profiles Page */
 .profile {
   display: grid;

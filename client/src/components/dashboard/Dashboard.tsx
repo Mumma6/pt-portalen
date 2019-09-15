@@ -22,7 +22,7 @@ const Dashboard = (props: any) => {
     return <Redirect to="/login" />;
   }
 
-  if (props.profile.loading === true) {
+  if (props.profile.profile === null || props.profile.loading) {
     return <Spinner />;
   }
   return (

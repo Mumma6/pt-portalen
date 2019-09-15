@@ -14,15 +14,14 @@ const ProfileItem = (props: any) => {
         <Link to={`/profile/${user._id}`} className="btn btn-primary">
           Visa profil
         </Link>
-        </div>
-        <ul>
-          {skills.slice(0, 5).map((skills: any, index: any) => (
-            <li key={index} className="text-primary">
-              <i className="fas fa-check"></i> {skills}
-            </li>
-          ))}
-        </ul>
-      
+      </div>
+      <ul>
+        {skills.slice(0, 5).map((skills: any, index: any) => (
+          <li key={index} className="text-primary">
+            <i className="fas fa-check"></i> {skills}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
