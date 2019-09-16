@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="footer">
       <h2>Detta är en footer men vad ska ingå?</h2>
       <ul>
-        <li>OM pt portalen</li>
+        <li>OM PT-portalen</li>
         <li>Kontakt, frågor osv?</li>
         <li>Skapa konto</li>
         <li>logga in</li>
