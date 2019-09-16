@@ -47,6 +47,7 @@ router.post(
 
     const {
       company,
+      email,
       website,
       location,
       bio,
@@ -64,6 +65,7 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (company) profileFields.company = company;
+    if (email) profileFields.email = email;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
@@ -72,6 +74,8 @@ router.post(
     if (skills) {
       profileFields.skills = skills.split(",").map(skill => skill.trim());
     }
+
+    
 
     // Build social object
     profileFields.social = {};
@@ -240,15 +244,6 @@ router.put(
     auth,
     [
       check('school', 'School is required')
-        .not()
-        .isEmpty(),
-      check('degree', 'Degree is required')
-        .not()
-        .isEmpty(),
-      check('fieldofstudy', 'Field of study is required')
-        .not()
-        .isEmpty(),
-      check('from', 'From date is required')
         .not()
         .isEmpty()
     ]

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { deleteComment } from "../../actions/forum";
-import auth from "../../reducers/auth";
+
 
 const CommentItem = (props: any) => {
   return (

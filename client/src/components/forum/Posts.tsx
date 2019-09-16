@@ -4,12 +4,17 @@ import { getPosts } from "../../actions/forum";
 import Spinner from "../../utils/Spinner";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
+import { Redirect } from "react-router";
 
 
 const Posts = (props: any) => {
   useEffect(() => {
     props.getPosts();
   }, [props.getPosts]);
+
+  if (props.auth.isAuthenticated === false) {
+    return <Redirect to="/login" />;
+  }
 
   return props.forum.loading ? <Spinner /> : <Fragment>
     <h1 className="large text-primary">Forum</h1>
@@ -26,7 +31,8 @@ const Posts = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  forum: state.forum
+  forum: state.forum,
+  auth: state.auth
 });
 
 export default connect(

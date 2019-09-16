@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 
+
 const Post = (props: any) => {
   useEffect(() => {
     props.getPost(props.match.params.id);
@@ -18,6 +19,7 @@ const Post = (props: any) => {
         <Spinner />
       ) : (
         <Fragment>
+          {props.auth.isAuthenticated }
           <Link to="/posts" className="btn">
             Gå tillbaka
           </Link>
@@ -35,7 +37,9 @@ const Post = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
+  
   forum: state.forum
+  
 });
 
 export default connect(

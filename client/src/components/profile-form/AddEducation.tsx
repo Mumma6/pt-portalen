@@ -40,7 +40,7 @@ const AddEducation = (props: any) => {
       <p className="lead">
         <i className="fas fa-code-branch"></i> Lägg till dina utbildningar här. Skola eller kurser osv
       </p>
-      <small>* = required field</small>
+    
       <form className="form" onSubmit={(e: any) => {
         e.preventDefault()
         props.addEducation(formData);
@@ -54,7 +54,7 @@ const AddEducation = (props: any) => {
             name="school"
             value={school}
             onChange={e => onChange(e)}
-            required
+            
           />
         </div>
         <div className="form-group">
@@ -64,7 +64,7 @@ const AddEducation = (props: any) => {
             name="degree"
             value={degree}
             onChange={e => onChange(e)}
-            required
+            
           />
         </div>
         <div className="form-group">

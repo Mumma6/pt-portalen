@@ -3,7 +3,7 @@ import React from "react";
 // här ska img in
 
 const ProfileTop = (props: any) => {
-  const { status, company, website, social, location } = props.profile.profile;
+  const { status, company, website, social, location, email } = props.profile.profile;
   return (
     <div className="profile-top bg-primary p-2">
       <h1 className="large">{props.profile.profile.user.name}</h1>
@@ -11,6 +11,7 @@ const ProfileTop = (props: any) => {
         {status} på {company && <span>{company}</span>}
       </p>
       <p>{location && <span>{location}</span>}</p>
+      <p>{location && <span>{email}</span>}</p>
       <div className="icons my-1">
         {website && (
           <a

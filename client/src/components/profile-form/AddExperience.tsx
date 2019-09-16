@@ -38,20 +38,23 @@ const AddExperience = (props: any) => {
     <div>
       <h1 className="large text-primary">Add An Experience</h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add any developer/programming
-        positions that you have had in the past
+        <i className="fas fa-code-branch"></i> Lägg till relevanta
+        arbetserfarenheter
       </p>
-      <small>* = required field</small>
-      <form className="form" onSubmit={(e: any) => {
-        e.preventDefault()
-        props.addExperience(formData);
-        props.getCurrentProfile()
-        props.history.push("/dashboard");
-      }}>
+      <small>* = obligatoriskt fält</small>
+      <form
+        className="form"
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          props.addExperience(formData);
+          props.getCurrentProfile();
+          props.history.push("/dashboard");
+        }}
+      >
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Job Title"
+            placeholder="* Titel"
             name="title"
             value={title}
             onChange={e => onChange(e)}
@@ -61,7 +64,7 @@ const AddExperience = (props: any) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Company"
+            placeholder="* Företag"
             name="company"
             value={company}
             onChange={e => onChange(e)}
@@ -71,14 +74,14 @@ const AddExperience = (props: any) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Location"
+            placeholder="Plats"
             name="location"
             value={location}
             onChange={e => onChange(e)}
           />
         </div>
         <div className="form-group">
-          <h4>From Date</h4>
+          <h4>Från</h4>
           <input
             type="date"
             name="from"
@@ -90,18 +93,18 @@ const AddExperience = (props: any) => {
           <p>
             <input
               type="checkbox"
-              name="current"
+              name="nuvarande"
               checked={current}
               onChange={e => {
                 setFormData({ ...formData, current: !current });
                 toggleDisable(!toDateDisable);
               }}
             />{" "}
-            Nyvarande job
+            Nuvarande job
           </p>
         </div>
         <div className="form-group">
-          <h4>To Date</h4>
+          <h4>till</h4>
           <input type="date" name="to" value={to} onChange={e => onChange(e)} />
         </div>
         <div className="form-group">
@@ -109,14 +112,14 @@ const AddExperience = (props: any) => {
             name="description"
             cols={30}
             rows={5}
-            placeholder="Job Description"
+            placeholder="Jobb beskrivning"
             value={description}
             onChange={e => onChange(e)}
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <a className="btn btn-light my-1" href="dashboard.html">
-          Go Back
+          Gå tillbaka
         </a>
       </form>
     </div>
@@ -125,6 +128,5 @@ const AddExperience = (props: any) => {
 
 export default connect(
   null,
-  { addExperience,
-  getCurrentProfile }
+  { addExperience, getCurrentProfile }
 )(withRouter(AddExperience));

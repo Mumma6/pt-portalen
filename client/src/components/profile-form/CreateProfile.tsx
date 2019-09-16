@@ -7,6 +7,7 @@ import { createProfile } from "../../actions/profile";
 const CreateProfile: React.FC = (props: any) => {
   interface IInitialState {
     company: string;
+    email: string;
     website: string;
     location: string;
     status: string;
@@ -21,6 +22,7 @@ const CreateProfile: React.FC = (props: any) => {
   // set initstate here...
   const initialState = {
     company: "",
+    email: "",
     website: "",
     location: "",
     status: "",
@@ -42,6 +44,7 @@ const CreateProfile: React.FC = (props: any) => {
   // Destructor formData
   const {
     company,
+    email,
     website,
     location,
     status,
@@ -58,13 +61,12 @@ const CreateProfile: React.FC = (props: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    props.createProfile(formData)
+    props.createProfile(formData);
 
-    props.history.push("/dashboard")
-
-  }
+    props.history.push("/dashboard");
+  };
 
   return (
     <div>
@@ -100,6 +102,16 @@ const CreateProfile: React.FC = (props: any) => {
             <div className="form-group">
               <input
                 type="text"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={(e: any) => onChange(e)}
+              />
+              <small className="form-text">Vad är din email adress</small>
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
                 placeholder="Företag"
                 name="company"
                 value={company}
@@ -118,7 +130,7 @@ const CreateProfile: React.FC = (props: any) => {
                 onChange={(e: any) => onChange(e)}
               />
               <small className="form-text">
-                Hemsidan måste anges i formatet www.hemsida.com 
+                Hemsidan måste anges i formatet www.hemsida.com
               </small>
             </div>
             <div className="form-group">
@@ -140,7 +152,8 @@ const CreateProfile: React.FC = (props: any) => {
                 onChange={(e: any) => onChange(e)}
               />
               <small className="form-text">
-                Använd ett komma mellan varje (eg. Styrka,Löpning,Kost,Ironman)
+                Ange dina spets kompetenser. Använd ett , mellan varje tex
+                Styrka, löpning, kost
               </small>
             </div>
 
@@ -154,24 +167,7 @@ const CreateProfile: React.FC = (props: any) => {
               <small className="form-text">Berätta lite om dig själv</small>
             </div>
 
-
-            
-            <div className="form-group">
-              <select
-                name="job"
-                value={job}
-                onChange={(e: any) => onChange(e)}
-              >
-                <option value="0">Välj ur listan</option>
-                <option value="Söker jobb">Söker jobb</option>
-                <option value="Söker inte jobb">Söker inte jobb</option>
-              </select>
-              <small className="form-text">Hur är din jobbstatus</small>
-            </div>
-
-            <div>
-
-            </div>
+            <div></div>
 
             <div className="my-2">
               <button
@@ -205,7 +201,6 @@ const CreateProfile: React.FC = (props: any) => {
                     name="youtube"
                     value={youtube}
                     onChange={(e: any) => onChange(e)}
-                    
                   />
                 </div>
 
@@ -233,11 +228,14 @@ const CreateProfile: React.FC = (props: any) => {
               </Fragment>
             )}
 
-            <Link to="/dashboard"><input type="submit" onClick={(e) => onSubmit(e)} className="btn btn-primary my-1" />
+            <Link to="/dashboard">
+              <input
+                type="submit"
+                onClick={e => onSubmit(e)}
+                className="btn btn-primary my-1"
+              />
             </Link>
-            <a className="btn btn-light my-1">
-              Avbryt
-            </a>
+            <a className="btn btn-light my-1">Avbryt</a>
           </form>
         </div>
       )}
@@ -249,4 +247,7 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));

@@ -18,11 +18,9 @@ const Dashboard = (props: any) => {
   }, [props.getCurrentProfile]);
 
   // Redirect if not logged in.
-  if (props.auth.isAuthenticated === false) {
-    return <Redirect to="/login" />;
-  }
+  
 
-  if (props.profile.profile === null || props.profile.loading) {
+  if (props.profile.loading) {
     return <Spinner />;
   }
   return (

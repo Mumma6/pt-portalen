@@ -10,6 +10,7 @@ import { createProfile, getCurrentProfile } from "../../actions/profile";
 const EditProfile: React.FC = (props: any) => {
   interface IInitialState {
     company: string;
+    email: string;
     website: string;
     location: string;
     status: string;
@@ -24,6 +25,7 @@ const EditProfile: React.FC = (props: any) => {
   // set initstate here...
   const initialState = {
     company: "",
+    email: "",
     website: "",
     location: "",
     status: "",
@@ -48,6 +50,7 @@ const EditProfile: React.FC = (props: any) => {
 
     setFormData({
       company: loading || !profile.company ? "" : profile.company,
+      email: loading || !profile.email ? "" : profile.email,
       website: loading || !profile.website ? "" : profile.website,
       location: loading || !profile.location ? "" : profile.location,
       status: loading || !profile.status ? "" : profile.status,
@@ -64,6 +67,7 @@ const EditProfile: React.FC = (props: any) => {
   // Destructor formData
   const {
     company,
+    email,
     website,
     location,
     status,
@@ -118,6 +122,16 @@ const EditProfile: React.FC = (props: any) => {
               </select>
               <small className="form-text">Vad har du för yrkestitel</small>
             </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={(e: any) => onChange(e)}
+              />
+              <small className="form-text">Vad är din email adress</small>
+            </div>  
             <div className="form-group">
               <input
                 type="text"
@@ -176,16 +190,6 @@ const EditProfile: React.FC = (props: any) => {
               <small className="form-text">Berätta lite om dig själv</small>
             </div>
 
-            <div className="form-group">
-              <select name="job" value={job} onChange={(e: any) => onChange(e)}>
-                <option value="0">Välj ur listan</option>
-                <option value="Söker jobb">Söker jobb</option>
-                <option value="Söker inte jobb">Söker inte jobb</option>
-              </select>
-              <small className="form-text">Hur är din jobbstatus</small>
-            </div>
-
-            <div></div>
 
             <div className="my-2">
               <button

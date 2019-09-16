@@ -8,7 +8,7 @@ const ProfileItem = (props: any) => {
       <div>
         <h2>{user.name}</h2>
         <p>
-          {status} {company && <span> at {company}</span>}
+          {status} {company && <span> på {company}</span>}
         </p>
         <p className="my-1">{location && <span>{location}</span>}</p>
         <Link to={`/profile/${user._id}`} className="btn btn-primary">

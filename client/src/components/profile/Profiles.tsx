@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Spinner from "../../utils/Spinner";
 import { getProfiles } from "../../actions/profile";
 import ProfileItem from "./ProfileItem";
-import Footer from "../layout/Footer";
 
 const Profiles = (props: any) => {
   useEffect(() => {

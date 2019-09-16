@@ -50,11 +50,6 @@ const Navbar: React.FC = (props: any) => {
         <span className="hide-sm">Skapa konto</span></Link>
       </li>
       <li>
-      <Link to="/posts">
-        <i className="fas fa-comment-dots" />{" "}
-        <span className="hide-sm">Forum</span></Link>
-      </li>
-      <li>
       <Link to="/login">
         <i className="fas fa-sign-in-alt" />{" "}
         <span className="hide-sm">Logga in</span></Link>
