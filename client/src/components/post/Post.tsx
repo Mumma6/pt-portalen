@@ -19,7 +19,7 @@ const Post = (props: any) => {
         <Spinner />
       ) : (
         <Fragment>
-          {props.auth.isAuthenticated }
+          
           <Link to="/posts" className="btn">
             Gå tillbaka
           </Link>
