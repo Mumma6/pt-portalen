@@ -152,8 +152,7 @@ const CreateProfile: React.FC = (props: any) => {
                 onChange={(e: any) => onChange(e)}
               />
               <small className="form-text">
-                Ange dina spets kompetenser. Använd ett , mellan varje tex
-                Styrka, löpning, kost
+                Ange upp till 5 spets kompetenser
               </small>
             </div>
 

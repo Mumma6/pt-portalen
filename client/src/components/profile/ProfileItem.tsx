@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 const ProfileItem = (props: any) => {
   const { user, status, company, location, skills } = props.profile;
+
+
+  
+
+
   return (
     <div className="profile bg-light">
       <div>
@@ -15,10 +20,12 @@ const ProfileItem = (props: any) => {
           Visa profil
         </Link>
       </div>
+      
       <ul>
+        
         {skills.slice(0, 5).map((skills: any, index: any) => (
           <li key={index} className="text-primary">
-            <i className="fas fa-check"></i> {skills}
+        {skills.length === 0 ? null : <i className="fas fa-check"></i>}{skills}
           </li>
         ))}
       </ul>

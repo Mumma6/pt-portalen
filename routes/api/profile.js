@@ -72,7 +72,7 @@ router.post(
     if (status) profileFields.status = status;
     if (job) profileFields.job = job;
     if (skills) {
-      profileFields.skills = skills.split(",").map(skill => skill.trim());
+      profileFields.skills = skills.split(" ").map(skill => skill.trim());
     }
 
     

@@ -54,7 +54,7 @@ const EditProfile: React.FC = (props: any) => {
       website: loading || !profile.website ? "" : profile.website,
       location: loading || !profile.location ? "" : profile.location,
       status: loading || !profile.status ? "" : profile.status,
-      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      skills: loading || !profile.skills ? "" : profile.skills.join(" "),
       bio: loading || !profile.bio ? "" : profile.bio,
       facebook: loading || !profile.facebook ? "" : profile.facebook,
       instagram: loading || !profile.instagram ? "" : profile.instagram,
@@ -176,7 +176,7 @@ const EditProfile: React.FC = (props: any) => {
                 onChange={(e: any) => onChange(e)}
               />
               <small className="form-text">
-                Använd ett komma mellan varje (eg. Styrka,Löpning,Kost,Ironman)
+              Ange upp till 5 spets kompetenser
               </small>
             </div>
 

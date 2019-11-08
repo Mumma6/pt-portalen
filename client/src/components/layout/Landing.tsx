@@ -1,39 +1,58 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 
 const Landing: React.FC = ({ isAuthenticated }: any) => {
-  if(isAuthenticated) {
-    return <Redirect to="/dashboard"/>;
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
   }
 
   return (
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Personliga tränar portalen</h1>
-          <p className="lead">
-            Hitta rätt personliga tränare för dig
-          </p>
-          <div className="buttons">
-            <Link to="/register" className="btn btn-primary">
-              Skapa konto
+          <div className="landing-text">
+            <h1 className="x-large">Hitta din personliga tränare här</h1>
+
+            <Link
+              style={{ fontSize: "30px" }}
+              className="btn btn-primary"
+              to="/profiles"
+            >
+              <i className="fas fa-user-friends" />{" "}
+              <span className="hide-sm">Personliga tränare</span>
             </Link>
-            <Link to="/login" className="btn btn-light">
-              Logga in
-            </Link>
+
+            <p className="lead">
+              Är du en personlig tränare, register dig här eller logga in
+            </p>
+
+            <div>
+              <Link
+                to="/register"
+                className="btn btn-success"
+                style={{ fontSize: "30px", marginRight: "20px" }}
+              >
+                Register
+              </Link>
+
+              <Link
+                to="/login"
+                className="btn btn-light"
+                style={{ fontSize: "30px", marginLeft: "20px" }}
+              >
+                Logga in
+              </Link>
+            </div>
           </div>
         </div>
-        <Footer />
       </div>
-    
     </section>
   );
 };
 
 const mapStateToProps = (state: any) => ({
   isAuthenticated: state.auth.isAuthenticated
-})
+});
 
 export default connect(mapStateToProps)(Landing);

@@ -13,12 +13,14 @@ const ProfileAbout = (props: any) => {
         </div>
         
       )}
+
+
      
       <h2 className="text-primary">Kompetenser</h2>
       <div className="skills">
         {props.profile.profile.skills.map((skill: any, index: any) => (
           <div key={index} className="p-1">
-            <i className="fas fa-check"></i> {skill}
+            {skill.length === 0 ? null :  <i className="fas fa-check"></i>} {skill}
           </div>
         ))}
       </div>

@@ -10,29 +10,32 @@ const Profiles = (props: any) => {
   }, []);
 
   return (
-      <Fragment>
-        {props.profile.loading ? (
-          <Spinner />
-        ) : (
-          <Fragment>
-            <h1 className="large text-primary">Tränare</h1>
-            <p className="lead">
-              <i className="fab fa-connectdevelop">
-                Hitta din personliga tränare här
-              </i>
-            </p>
-            <div className="profiles">
-              {props.profile.profiles.length > 0 ? (
-                props.profile.profiles.map((profile: any) => (
+    <Fragment>
+      {props.profile.profiles.loading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          <h1 className="large text-primary">Tränare</h1>
+          <p className="lead">
+            <i className="fab fa-connectdevelop">
+              Hitta personliga tränare här
+            </i>
+          </p>
+
+          <div className="profiles">
+            {props.profile.profiles.length > 0 ? (
+              props.profile.profiles
+                .map((profile: any) => (
                   <ProfileItem key={profile._id} profile={profile} />
                 ))
-              ) : (
-                <h3>Hittade inga profiler</h3>
-              )}
-            </div>
-          </Fragment>
-        )}
-      </Fragment>
+                
+            ) : (
+              <h3>Hittade inga profiler</h3>
+            )}
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
 

@@ -3,26 +3,26 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 
-
 const Navbar: React.FC = (props: any) => {
-
   // Logged in
   const authLinks = (
     <ul>
       <li>
-      <Link to="/profiles">
-        <i className="fas fa-user-friends" />{" "}
-        <span className="hide-sm">Personliga tränare</span></Link>
+        <Link to="/profiles">
+          <i className="fas fa-user-friends" />{" "}
+          <span className="hide-sm">Personliga tränare</span>
+        </Link>
       </li>
       <li>
         <Link to="/dashboard">
-        <i className="fas fa-user" />{" "}
-        <span className="hide-sm">Profil</span></Link>
+          <i className="fas fa-user" /> <span className="hide-sm">Profil</span>
+        </Link>
       </li>
       <li>
-      <Link to="/posts">
-        <i className="fas fa-comment-dots" />{" "}
-        <span className="hide-sm">Forum</span></Link>
+        <Link to="/posts">
+          <i className="fas fa-comment-dots" />{" "}
+          <span className="hide-sm">Forum</span>
+        </Link>
       </li>
       <li>
         <Link to="/" onClick={props.logout}>
@@ -30,29 +30,17 @@ const Navbar: React.FC = (props: any) => {
           <span className="hide-sm">Logga ut</span>
         </Link>
       </li>
-      
     </ul>
   );
-
-
 
   // Loged out
   const questLinks = (
     <ul>
       <li>
-      <Link to="/profiles">
-        <i className="fas fa-user-friends" />{" "}
-        <span className="hide-sm">Personliga tränare</span></Link>
-      </li>
-      <li>
-      <Link to="/register">
-        <i className="fas fa-user-plus" />{" "}
-        <span className="hide-sm">Skapa konto</span></Link>
-      </li>
-      <li>
-      <Link to="/login">
-        <i className="fas fa-sign-in-alt" />{" "}
-        <span className="hide-sm">Logga in</span></Link>
+      <Link to="/about">
+          <i className="fas fa-info-circle" />{" "}
+          <span className="hide-sm">Hur fungerar det</span>
+        </Link>
       </li>
       
     </ul>
@@ -65,7 +53,11 @@ const Navbar: React.FC = (props: any) => {
           <i className="fas fa-dumbbell" /> PT-Portalen
         </Link>
       </h1>
-      { !props.loading && (<Fragment>{ props.auth.isAuthenticated ? authLinks : questLinks }</Fragment>)}
+      {!props.loading && (
+        <Fragment>
+          {props.auth.isAuthenticated ? authLinks : questLinks}
+        </Fragment>
+      )}
     </nav>
   );
 };

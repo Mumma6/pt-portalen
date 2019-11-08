@@ -4,7 +4,7 @@
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
-  --success-color: #28a745;
+  --success-color: #2dbd4f;
 }
 
 * {
@@ -301,6 +301,7 @@ button {
 /* Navbar */
 .navbar {
   display: flex;
+  font-size: 24px;
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 2rem;
@@ -332,10 +333,16 @@ button {
 
 /* Landing Page */
 .landing {
-  position: relative;
+  
   background: url('./img/showcase.jpg') no-repeat center center/cover;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
+
+
 
 .landing-inner {
   color: #fff;
@@ -347,19 +354,35 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  
 }
 
-/* Footer */
-.footer {
-  background-color: lightslategray;
-  color: white;
-  text-align: center;
+.landing-text {
+  padding: 20px;
+  padding-bottom: 30px;
 }
+
+.landing {
+  font-size: 40px;
+}
+
+.landing p {
+  margin-top: 90px;
+  font-size: 28px;
+}
+
+/* About page */
+
+.about-page p {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
 
 /* Profiles Page */
 .profile {
   display: grid;
-  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-columns: 2fr 2fr;
   align-items: center;
   grid-gap: 2rem;
   padding: 1rem;
@@ -496,7 +519,14 @@ button {
 }
 
 /* Mobile Styles */
-@media (max-width: 700px) {
+
+@media (max-width: 1000px) {
+  .navbar {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 840px) {
   .container {
     margin-top: 8rem;
   }
@@ -520,6 +550,7 @@ button {
 
   /* Navbar */
   .navbar {
+    font-size: 20px;
     display: block;
     text-align: center;
   }
@@ -581,4 +612,11 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+
+
+.not-found {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 50px;
 }
